@@ -1,0 +1,21 @@
+{
+  "name": "weface",
+  "homepage": "https://github.com/TennyZhuang/weface",
+  "authors": [
+    "TennyZhuang <zty0826@gmail.com>"
+  ],
+  "description": "A front-end library for displaying wechat messages with faces on html.",
+  "main": "dist/src/main.js",
+  "keywords": [
+    "wechat",
+    "face"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
