@@ -5,7 +5,7 @@
     "TennyZhuang <zty0826@gmail.com>"
   ],
   "description": "A front-end library for displaying wechat messages with faces on html.",
-  "main": "dist/src/main.js",
+  "main": "dist/src/weface.js",
   "keywords": [
     "wechat",
     "face"
