@@ -6,6 +6,7 @@ const uglify = require('gulp-uglify');
 const babel = require('gulp-babel');
 const mocha = require('gulp-mocha');
 const eslint = require('gulp-eslint');
+const size = require('gulp-size');
 
 import del from 'del';
 
@@ -21,25 +22,29 @@ gulp.task('lint', () => {
     .pipe(eslint.failAfterError());
 });
 
+gulp.task('scripts', () => {
+    return gulp.src(src)
+      .pipe(sourceMaps.init())
+      .pipe(babel())
+      .pipe(uglify())
+      .pipe(sourceMaps.write('.'))
+      .pipe(gulp.dest(dest));
+});
+
 gulp.task('images', () => {
   return gulp.src('src/images/**/*')
-    .pipe(gulp.dest('dist/src/images'));
+    .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('extras', () => {
   return gulp.src([
     'src/*.*',
     '!src/*.js'
-  ]).pipe(gulp.dest('dist/src'));
+  ]).pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', ['extras', 'images', 'lint', 'clean'], () => {
-  return gulp.src(src, srcOption)
-    .pipe(sourceMaps.init())
-    .pipe(babel())
-    .pipe(uglify())
-    .pipe(sourceMaps.write('.', { includeContent: false, sourceRoot: '..' }))
-    .pipe(gulp.dest(dest));
+gulp.task('build', ['scripts', 'extras', 'images', 'lint', 'clean'], () => {
+  return gulp.src('dist/**/*').pipe(size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', ['clean'], () => {
