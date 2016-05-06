@@ -120,15 +120,14 @@ const ESCAPED_WECHAT_FACE_MAP = new Map(Array.from(WECHAT_FACE_MAP).map((entry) 
 }));
 
 class Weface {
-  constructor(base, escaped = false) {
-    this.base = base;
+  constructor(escaped = false) {
     this.faceMap = escaped ? ESCAPED_WECHAT_FACE_MAP : WECHAT_FACE_MAP;
   }
 
   compile(message) {
     this.faceMap.forEach((value, key) => {
       message = message.replace(key,
-        `<img class="wechatface" style="width: 1em; height: 1em;" src="${this.base}${value}.png" alt="${key}"></img>`);
+        `<div class="wechatface wechatface-${value}"></div>`);
     });
 
     return message;

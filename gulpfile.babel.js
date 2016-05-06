@@ -2,6 +2,8 @@
 
 const gulp = require('gulp');
 const sourceMaps = require('gulp-sourcemaps');
+const sass = require('gulp-sass');
+const base64 = require('gulp-css-base64');
 const uglify = require('gulp-uglify');
 const babel = require('gulp-babel');
 const mocha = require('gulp-mocha');
@@ -9,17 +11,25 @@ const eslint = require('gulp-eslint');
 const size = require('gulp-size');
 
 import del from 'del';
+import fs from 'fs';
 
 const src = ['src/**/*.js'];
 const testSrc = ['test/**/*.js'];
 const srcOption = { base: './' };
-const dest = './dist'
+const dest = './dist';
 
 gulp.task('lint', () => {
   return gulp.src(src)
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
+});
+
+gulp.task('styles', () => {
+  return gulp.src('src/weface.sass')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(base64())
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('scripts', () => {
@@ -39,12 +49,14 @@ gulp.task('images', () => {
 gulp.task('extras', () => {
   return gulp.src([
     'src/*.*',
-    '!src/*.js'
+    '!src/*.js',
+    '!src/*.sass'
   ]).pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', ['scripts', 'extras', 'images', 'lint', 'clean'], () => {
-  return gulp.src('dist/**/*').pipe(size({title: 'build', gzip: true}));
+gulp.task('build', ['scripts', 'styles', 'extras', 'images', 'lint'], () => {
+  return gulp.src('dist/**/*')
+    .pipe(size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', ['clean'], () => {

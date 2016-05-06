@@ -1,0 +1,9 @@
+.wechatface
+  width: 1em
+  height: 1em
+  background-size: 1em, 1em
+
+@for $i from 1 through 105
+  .wechatface-#{$i}
+    display: inline-block
+    background-image: url(images/wechatface/#{$i}.png)
