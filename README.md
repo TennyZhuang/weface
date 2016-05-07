@@ -9,15 +9,22 @@ bower install weface
 
 ## Usage
 
+```html
+<link rel="stylesheet" href="bower_component/weface/dist/weface.css">
+<script src="bower_component/weface/dist/weface.js"></script>
+```
+
 ```javascript
-var weface = new Weface('/path/to/wechat_face_images/');
+var weface = new Weface();
 
 weface.compile('123\:bye');
-// 123<img class="wechatface" style="width: 1em; height: 1em;" src="/path/to/wechat_face_images/40.png" alt="/:bye">
+// 123<div class="wechatface wechatface-40"></div>
 
 // option: escaped
-weface = new Weface('/path/to/wechat_face_images/', true);
+weface = new Weface({
+  escaped: true
+});
 
 weface.compile('/:@&gt;123');
-// <img class="wechatface" style="width: 1em; height: 1em;" src="/path/to/wechat_face_images/47.png" alt="/:@&gt;">123
+// <div class="wechatface wechatface-47"></div>123
 ```
