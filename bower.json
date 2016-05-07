@@ -6,9 +6,9 @@
   ],
   "description": "A front-end library for displaying wechat messages with faces on html.",
   "main": [
-      "dist/weface.js",
-      "dist/weface.css"
-    ],
+    "dist/weface.js",
+    "dist/weface.css"
+  ],
   "keywords": [
     "wechat",
     "face"
@@ -20,5 +20,6 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "version": "1.0.0"
 }
