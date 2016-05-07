@@ -109,14 +109,11 @@ const WECHAT_FACE_MAP = new Map([
 const ENTITY_MAP = new Map([
   ['&', '&amp;'],
   ['<', '&lt;'],
-  ['>', '&gt;'],
-  ['"', '&quot;'],
-  ['\'', '&#39;'],
-  ['/', '&#x2F;'],
+  ['>', '&gt;']
 ]);
 
 const ESCAPED_WECHAT_FACE_MAP = new Map(Array.from(WECHAT_FACE_MAP).map((entry) => {
-  return [entry[0].replace(/[&<>"'\/]/g, s => ENTITY_MAP.get(s)), entry[1]];
+  return [entry[0].replace(/[&<>]/g, s => ENTITY_MAP.get(s)), entry[1]];
 }));
 
 class Weface {
