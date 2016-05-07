@@ -5,6 +5,7 @@ const sourceMaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const base64 = require('gulp-css-base64');
 const uglify = require('gulp-uglify');
+const cssnano = require('gulp-cssnano')
 const babel = require('gulp-babel');
 const mocha = require('gulp-mocha');
 const eslint = require('gulp-eslint');
@@ -29,6 +30,7 @@ gulp.task('styles', () => {
   return gulp.src('src/weface.sass')
     .pipe(sass().on('error', sass.logError))
     .pipe(base64())
+    .pipe(cssnano())
     .pipe(gulp.dest('dist'));
 });
 
