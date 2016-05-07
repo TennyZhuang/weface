@@ -117,8 +117,8 @@ const ESCAPED_WECHAT_FACE_MAP = new Map(Array.from(WECHAT_FACE_MAP).map((entry) 
 }));
 
 class Weface {
-  constructor(escaped = false) {
-    this.faceMap = escaped ? ESCAPED_WECHAT_FACE_MAP : WECHAT_FACE_MAP;
+  constructor(options = {}) {
+    this.faceMap = (options.escaped === true) ? ESCAPED_WECHAT_FACE_MAP : WECHAT_FACE_MAP;
   }
 
   compile(message) {
