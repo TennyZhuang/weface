@@ -43,11 +43,6 @@ gulp.task('scripts', () => {
       .pipe(gulp.dest(dest));
 });
 
-gulp.task('images', () => {
-  return gulp.src('src/images/**/*')
-    .pipe(gulp.dest('dist/images'));
-});
-
 gulp.task('extras', () => {
   return gulp.src([
     'src/*.*',
@@ -56,7 +51,7 @@ gulp.task('extras', () => {
   ]).pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', ['scripts', 'styles', 'extras', 'images', 'lint'], () => {
+gulp.task('build', ['scripts', 'styles', 'extras', 'lint'], () => {
   return gulp.src('dist/**/*')
     .pipe(size({title: 'build', gzip: true}));
 });
