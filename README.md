@@ -28,3 +28,12 @@ weface = new Weface({
 weface.compile('/:@&gt;123');
 // <div class="wechatface wechatface-47"></div>123
 ```
+
+## Build
+
+You need `gulp-cli`, you should have `gulp` in your path.
+
+```
+> npm install
+> gulp
+```
