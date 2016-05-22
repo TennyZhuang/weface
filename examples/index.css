@@ -1,0 +1,20 @@
+html, body {
+  height: 100%;
+}
+
+#container {
+  margin: 10px auto;
+  padding: 10px 10px;
+  width: 800px;
+  list-style-type: none;
+  background-color: #00bfa5;
+  height: 90%;
+  border-radius: 10px;
+  box-shadow: 10px 10px 8px #bbbbbb;
+}
+
+#container > li {
+  color: white;
+  font-size: 2em;
+  margin: 10px;
+}
