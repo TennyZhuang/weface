@@ -10,8 +10,8 @@ bower install weface
 ## Usage
 
 ```html
-<link rel="stylesheet" href="bower_component/weface/dist/weface.css">
-<script src="bower_component/weface/dist/weface.js"></script>
+<link rel="stylesheet" href="bower_components/weface/dist/weface.css">
+<script src="bower_components/weface/dist/weface.js"></script>
 ```
 
 ```javascript
