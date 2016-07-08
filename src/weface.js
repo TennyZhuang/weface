@@ -1,4 +1,8 @@
 (() => {
+  String.prototype.replaceAll = function(target, replacement) {
+    return this.split(target).join(replacement);
+  };
+
   const WECHAT_FACE_MAP = new Map([
     ['/::)', '1'],
     ['/::~', '2'],
@@ -124,7 +128,7 @@
 
     compile(message) {
       this.faceMap.forEach((value, key) => {
-        message = message.replace(key,
+        message = message.replaceAll(key,
           `<div class="wechatface wechatface-${value}"></div>`);
       });
 
