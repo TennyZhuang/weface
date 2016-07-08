@@ -5,7 +5,7 @@
   var weface = new Weface();
   var messages = [
     'Hello! /::)',
-    'Bye! /:bye'
+    'Bye! /:bye/:bye'
   ];
 
   function start() {
