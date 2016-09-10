@@ -10,6 +10,10 @@ const babel = require('gulp-babel');
 const mocha = require('gulp-mocha');
 const eslint = require('gulp-eslint');
 const size = require('gulp-size');
+const tar = require('gulp-tar');
+const gzip = require('gulp-gzip');
+const zip = require('gulp-zip');
+const version = require('./package.json').version;
 
 import del from 'del';
 import fs from 'fs';
@@ -58,6 +62,30 @@ gulp.task('build', ['scripts', 'styles', 'extras', 'lint'], () => {
 
 gulp.task('default', ['clean'], () => {
   gulp.start('build');
+});
+
+gulp.task('gz', () => {
+  return gulp.src('dist/**/*')
+    .pipe(tar(`weface-${version}.tar`))
+    .pipe(gzip())
+    .pipe(gulp.dest('release'));
+});
+
+gulp.task('zip', () => {
+  return gulp.src('dist/**/*')
+    .pipe(zip(`weface-${version}.zip`))
+    .pipe(gulp.dest('release'));
+});
+
+gulp.task('examples', () => {
+  return gulp.src('dist/**/*')
+    .pipe(gulp.dest('examples'));
+});
+
+gulp.task('release', () => {
+  gulp.start('gz');
+  gulp.start('zip');
+  gulp.start('examples');
 });
 
 gulp.task('clean', del.bind(null, ['dist']));

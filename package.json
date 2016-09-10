@@ -36,6 +36,7 @@
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-tar": "^1.9.0",
-    "gulp-uglify": "^1.5.3"
+    "gulp-uglify": "^1.5.3",
+    "gulp-zip": "^3.2.0"
   }
 }
