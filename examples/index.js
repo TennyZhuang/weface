@@ -2,7 +2,13 @@
 
 (function() {
   var container = document.querySelector('#container');
-  var weface = new Weface();
+  var weface = new Weface({
+    styles: {
+      'vertical-align': 'baseline',
+      'width': '34px'
+    }
+  });
+
   var messages = [
     'Hello! /::)',
     'Bye! /:bye/:bye'
