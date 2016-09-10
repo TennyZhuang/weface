@@ -27,6 +27,14 @@ weface = new Weface({
 
 weface.compile('/:@&gt;123');
 // <div class="wechatface wechatface-47"></div>123
+
+// option: styles
+weface = new Weface({
+  styles: {
+    'width': '50px',
+    'vertical-align': 'baseline'
+  }
+});
 ```
 
 ## Build
