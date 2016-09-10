@@ -3,6 +3,10 @@
     return this.split(target).join(replacement);
   };
 
+  Array.prototype.last = function() {
+    return this[this.length - 1] || null;
+  }
+
   const WECHAT_FACE_MAP = new Map([
     ['/::)', '1'],
     ['/::~', '2'],
@@ -124,6 +128,16 @@
   class Weface {
     constructor(options = {}) {
       this.faceMap = (options.escaped === true) ? ESCAPED_WECHAT_FACE_MAP : WECHAT_FACE_MAP;
+      if (options.styles) {
+        document.body.appendChild(document.createElement('style'));
+        const styleSheet = Array.from(document.styleSheets).last();
+        let rules = [];
+        for (let key in options.styles) {
+          rules.push(`${key}: ${options.styles[key]} !important;`)
+        }
+
+        styleSheet.insertRule(`.wechatface { ${rules.join(' ')} }`);
+      }
     }
 
     compile(message) {
