@@ -149,5 +149,10 @@
       return message;
     }
   }
-  window.Weface = Weface;
+
+  try {
+    window.Weface = Weface;
+  } catch (e) {
+    global.Weface = Weface;
+  }
 })();
