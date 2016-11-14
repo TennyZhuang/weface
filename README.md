@@ -17,7 +17,7 @@ bower install weface
 ```javascript
 var weface = new Weface();
 
-weface.compile('123\:bye');
+weface.compile('123/:bye');
 // 123<div class="wechatface wechatface-40"></div>
 
 // option: escaped
