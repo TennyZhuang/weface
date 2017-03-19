@@ -3,8 +3,12 @@ A front-end library for display wechat message with faces.
 
 ## Install
 
-```
+```bash
+# from bower
 bower install weface
+
+# from npm
+npm install weface
 ```
 
 ## Usage
